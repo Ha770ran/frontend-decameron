@@ -95,17 +95,6 @@ onMounted(async () => {
 })
 </script>
 
-<template>
-  <h2>Listado de Hoteles</h2>
-  <ul>
-    <li v-for="hotel in hotels" :key="hotel.id">
-      {{ hotel.name }} – {{ hotel.city }} ({{ hotel.max_rooms }} habitaciones)
-    </li>
-  </ul>
-</template>
-
-</script>
-
 <style scoped>
 
 .hotel-list {
