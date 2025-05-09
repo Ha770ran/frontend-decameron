@@ -71,24 +71,24 @@ const registrarHabitacion = async () => {
   }
 
   try {
-  const data = { ...form.value, hotel_id: props.hotelId }
+    const data = { ...form.value, hotel_id: props.hotelId }
 
-  let response
-  if (form.value.id) {
-    response = await axios.put(`${api}/rooms.php`, data)
-  } else {
-    response = await axios.post(`${api}/rooms.php`, data)
+    let response
+    if (form.value.id) {
+      response = await axios.put(`${api}/rooms.php`, data)
+    } else {
+      response = await axios.post(`${api}/rooms.php`, data)
+    }
+
+    mensaje.value = response.data.message || 'Habitación guardada correctamente.'
+    form.value = { room_type: '', accommodation: '', quantity: 1 }
+    emit('habitacion-creada')
+  } catch (err) {
+    esError.value = true
+    mensaje.value = err.response?.data?.error || 'Error al guardar habitación.'
   }
-
-  mensaje.value = response.data.message || 'Habitación guardada correctamente.'
-  form.value = { room_type: '', accommodation: '', quantity: 1 }
-  emit('habitacion-creada')
-} catch (err) {
-  esError.value = true
-  mensaje.value = err.response?.data?.error || 'Error al guardar habitación.'
-}
-
-</script>
+} // 
+</script> 
 
 <style scoped>
 .room-form {
