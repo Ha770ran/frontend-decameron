@@ -43,7 +43,7 @@ import axios from 'axios'
 
 const props = defineProps({
   hotelId: Number,
-  hotelName: String
+  hotelName: String,
   roomEditada: Object
 })
 
